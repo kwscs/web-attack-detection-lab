@@ -39,4 +39,4 @@ main 인덱스의 access_combined 로그에서 uri_query에 `../`, `/etc/passwd`
 
 ![LFI Detection](../screenshots/03_lfi_payloads.png)
 
-`192.168.122.96` 에서 `/vulnerabilities/fi/` 경로로 요청 5건이 탐지되었다. 디코딩된 페이로드에서 `../../../../etc/passwd`, `../../../../proc/self/environ` 등 lfi 공격 형태가 확인되었다.
+`192.168.122.96` 에서 `/vulnerabilities/fi/` 경로로 요청 4건이 탐지되었다. 디코딩된 페이로드에서 `../../../../etc/passwd`, `../../../../proc/self/environ` 등 웹 루트 외부의 파일을 요청하는 패턴이 확인되었다.

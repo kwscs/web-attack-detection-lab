@@ -2,8 +2,7 @@
 
 ## 개요
 
-접근 로그에서 셸 메타문자와 함께 whoami, id, uname, cat 같은 명령어가 포함된 요청을 탐지한다.
-처음에는 셸 메타문자만으로 탐지했으나 오탐이 많아 명령어까지 함께 보는 방식으로 정밀화했다.
+Apache 접근 로그의 uri_query 필드에 남은 Command Injection 흔적을 탐지한다.
 
 ## 사용 로그
 
@@ -16,7 +15,7 @@
 
 ## 시나리오
 
-Kali Linux에서 DVWA의 Command Injection 페이지(/vulnerabilities/exec/)의 IP 입력란에 `127.0.0.1; id`, `127.0.0.1 && whoami`, `127.0.0.1; uname -a`, `127.0.0.1; cat /etc/passwd`처럼 셸 메타문자로 명령을 연결해 입력했다. www-data 권한으로 명령이 실행되는 것을 확인했다.
+Kali Linux에서 DVWA의 Command Injection 페이지(`/vulnerabilities/exec/`)에 `ip=127.0.0.1;id`, `ip=127.0.0.1&&whoami`, `ip=127.0.0.1;uname -a`, `ip=127.0.0.1;cat /etc/passwd`처럼 셸 메타문자로 명령을 연결한 페이로드를 전송했다.
 
 ![Command injection recon commands](../screenshots/attack-cmdi-recon.png)
 
@@ -64,7 +63,7 @@ index=main sourcetype=access_combined host=dvwa
 ```
 ![Command Injection Detection](../screenshots/04_cmdi_regex.png)
 
-regex로 바꾼 뒤에도 탐지 건수는 9건으로 동일했고 룰만 단순해졌다.
+regex 방식으로 바꾼 뒤에도 탐지 건수는 9건으로 동일했다.
 
 ## 탐지 결과
 

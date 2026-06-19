@@ -8,10 +8,10 @@
 
 - Apache access log (access_combined)
 
-## MITRE ATT&CK
+## 분류
 
-- Tactic : Initial Access
-- Technique : Exploit Public-Facing Application - T1190
+- OWASP : Cross-Site Scripting (XSS)
+- CWE : CWE-79
 
 ## 시나리오
 
@@ -46,5 +46,5 @@ main 인덱스의 access_combined 로그에서 `uri_query`에 `<script`, `onerro
 
 ![XSS Detection](../screenshots/02_xss_payloads.png)
 
-`192.168.122.96` 에서 `/vulnerabilities/xss_r/` 경로로 XSS 페이로드가 포함된 요청 9건이 탐지되었다.
-디코딩된 페이로드에서 script 태그와 onerror, onload 핸들러가 확인되었다.
+`192.168.122.96` 에서 `/vulnerabilities/xss_r/` 경로로 XSS 페이로드가 포함된 요청 8건이 탐지되었다.
+디코딩된 페이로드에서 script 태그와 onerror, onload가 확인되었다.

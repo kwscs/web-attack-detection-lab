@@ -21,7 +21,7 @@ DVWA와 Splunk를 활용한 웹 공격 탐지 Lab입니다.
 2. Reflected XSS 탐지
 3. LFI 탐지
 4. Command Injection 탐지
-5. Web shell upload 탐지
+5. Web shell 업로드 탐지
 
 ## Dashboard Screenshots
 
@@ -46,7 +46,7 @@ web-attack-detection-lab
     ├── TICKET-01-sqli.md
     ├── TICKET-02-xss.md
     ├── TICKET-03-lfi.md
-    ├── TICKET-04-command_injection.md
-    └── TICKET-05-upload_webshell.md
+    ├── TICKET-04-command-injection.md
+    └── TICKET-05-upload-webshell.md
 ```
 
