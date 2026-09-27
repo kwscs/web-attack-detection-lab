@@ -2,7 +2,7 @@
 
 ## 탐지 개요
 
-- 발생 시각 : 2026-06-08 14:34
+- 발생 시각 : 2026-06-05 13:22, 15:13 / 2026-06-08 14:34
 - 출발지 IP : 192.168.122.96
 - 대상 : 192.168.122.20
 - 심각도 : High
@@ -13,7 +13,7 @@
 
 접근 로그에서 ../, /etc/passwd, /etc/shadow, /proc/self/environ 등 LFI 및 Path Traversal 시그니처가 포함된 요청 4건이 탐지되었다. 탐지된 요청은 모두 192.168.122.96에서 발생했으며 대상 경로는 /vulnerabilities/fi/이다.
 
-디코딩된 페이로드에서는 page=../../../../etc/passwd, page=../../../../etc/shadow, page=../../../../proc/self/environ 등 웹 루트 외부의 시스템 파일을 읽으려는 패턴이 확인되었다. /etc/passwd, /etc/shadow, /proc/self/environ처럼 민감한 파일을 직접 지정한 점에서 LFI 공격으로 판단된다.
+디코딩된 페이로드에서는 page=../../../../../etc/passwd, page=../../../../etc/shadow, page=../../../../proc/self/environ 등 웹 루트 외부의 시스템 파일을 읽으려는 패턴이 확인되었다. /etc/passwd, /etc/shadow, /proc/self/environ처럼 민감한 파일을 직접 지정한 점에서 LFI 공격으로 판단된다.
 
 ## 판단
 

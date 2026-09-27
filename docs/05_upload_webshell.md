@@ -44,7 +44,8 @@ index=main sourcetype=linux_audit host=dvwa webroot_change
 index=main host=dvwa
     ((sourcetype=access_combined clientip="192.168.122.96" uri_path="*upload*")
     OR (sourcetype=linux_audit webroot_change))
-| table _time sourcetype clientip method uri_path status comm syscall
+| eval decoded=urldecode(uri_query)
+| table _time sourcetype clientip method uri_path decoded status comm syscall
 | sort _time
 ```
 

@@ -29,7 +29,8 @@ Kali Linux에서 DVWA의 Command Injection 페이지(`/vulnerabilities/exec/`)�
 index=main sourcetype=access_combined host=dvwa
     (uri_query="*;*" OR uri_query="*%3B*"
     OR uri_query="*|*" OR uri_query="*%7C*"
-    OR uri_query="*&&*" OR uri_query="*%26%26*")
+    OR uri_query="*`*")
+    OR uri_query="*&&*" OR uri_query="*%26%26*"
 | eval decoded=urldecode(uri_query)
 | table _time clientip method uri_path decoded status
 | sort -_time
@@ -69,4 +70,4 @@ regex 방식으로 바꾼 뒤에도 탐지 건수는 9건으로 동일했다.
 
 ![Command Injection Detection](../screenshots/04_cmdi_regex.png)
 
-`192.168.122.96` 에서 `/vulnerabilities/exec/` 경로로 명령어 주입 요청 9건이 탐지되었다. 디코딩된 페이로드에서 `;whoami`, `;id`, `;cat /etc/passwd` 등이 확인되었다.
+`192.168.122.96` 에서 `/vulnerabilities/exec/` 경로로 명령어 주입 요청 9건이 탐지되었다. 디코딩된 페이로드에서 `| whoami`, `;id`, `;cat /etc/passwd` 등이 확인되었다.
